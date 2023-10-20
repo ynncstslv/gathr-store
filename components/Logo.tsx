@@ -10,7 +10,7 @@ const Logo = () => {
 		<>
 			<Link href="/" className="flex items-center justify-start">
 				<div className="w-8 h-8 relative mr-2">
-					<Image src="/assets/logo-icon-white.png" alt="gathr logo" />
+					<Image src="/assets/logo-icon-white.png" alt="gathr logo" fill />
 				</div>
 				<h1
 					className={`${logo.className} text-2xl tracking-tight text-neutral-50 md:text-3xl`}
