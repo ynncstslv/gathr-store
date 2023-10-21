@@ -21,7 +21,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
 	return (
 		<div className="p-6 mx-3 border border-neutral-300 rounded-lg shadow-md">
 			<Image
-				src={data.images}
+				src={data.images[0].image}
 				alt={data.name}
 				width={220}
 				height={220}
@@ -34,11 +34,11 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
 				<div className="flex items-center justify-center gap-4">
 					<div>
 						{!productRating ? (
-							<Badge className="font-medium text-neutral-500 border border-neutral-500 bg-transparent">
+							<Badge className="font-medium text-neutral-500 border border-neutral-500 bg-transparent transition hover:bg-transparent hover:opacity-90">
 								No Reviews
 							</Badge>
 						) : (
-							<Badge className="font-medium text-yellow-900 bg-yellow-500">
+							<Badge className="font-medium text-yellow-900 bg-yellow-500 transition hover:bg-yellow-500 hover:opacity-90">
 								{productRating} <ThumbsUp size={12} className="ml-1" />
 							</Badge>
 						)}
@@ -47,7 +47,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
 				</div>
 				<Button
 					className="w-full mt-8 text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90"
-					onClick={() => router.push('/shop')}
+					onClick={() => router.push(`/store/${data.id}`)}
 				>
 					<InfoIcon size={18} className="mr-2" /> More Information
 				</Button>
