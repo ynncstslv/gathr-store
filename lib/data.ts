@@ -9,23 +9,18 @@ export const paths = [
 	},
 	{
 		id: 2,
-		name: 'Singles',
-		route: '/singles',
+		name: 'About',
+		route: '/about',
 	},
 	{
 		id: 3,
-		name: 'Sealed',
-		route: '/sealed',
+		name: 'Online Store',
+		route: '/store',
 	},
 	{
 		id: 4,
-		name: 'Accessories',
-		route: '/accessories',
-	},
-	{
-		id: 5,
-		name: 'All Products',
-		route: '/all',
+		name: 'Contact Us',
+		route: '/contact',
 	},
 ] as const;
 
@@ -41,5 +36,24 @@ export const availableRightNow = [
 		name: 'Commander Masters',
 		image: CMDM,
 		route: '/sealed',
+	},
+];
+
+export const categories = [
+	{
+		id: 1,
+		name: 'Singles',
+	},
+	{
+		id: 2,
+		name: 'Sealed',
+	},
+	{
+		id: 3,
+		name: 'Complete Sets',
+	},
+	{
+		id: 4,
+		name: 'Accessories',
 	},
 ];
