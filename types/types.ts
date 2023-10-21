@@ -17,3 +17,5 @@ export type SelectedImageType = {
 	colorCode: string;
 	image: StaticImageData;
 };
+
+export type CartContextType = { cartTotalQuantity: number };
