@@ -21,7 +21,7 @@ const ProductRatings: FC<ProductRatingsProps> = ({ product }) => {
 				</p>
 			</div>
 			<div className="text-sm">
-				{product.reviews &&
+				{product.reviews.length > 0 ? (
 					product.reviews.map((review: any) => {
 						return (
 							<div
@@ -48,7 +48,12 @@ const ProductRatings: FC<ProductRatingsProps> = ({ product }) => {
 								<p className="font-light text-violet-900">{`"${review.comment}"`}</p>
 							</div>
 						);
-					})}
+					})
+				) : (
+					<p className="text-center text-neutral-300 md:text-start">
+						No reviews for this product yet...
+					</p>
+				)}
 			</div>
 		</section>
 	);
