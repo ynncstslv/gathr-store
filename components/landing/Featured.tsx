@@ -46,7 +46,7 @@ const Featured = () => {
 						},
 					}}
 				>
-					{dummyProducts.map((product) => (
+					{dummyProducts.slice(0, 5).map((product) => (
 						<SwiperSlide key={product.id}>
 							<ProductCard data={product} />
 						</SwiperSlide>
