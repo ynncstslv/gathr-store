@@ -1,5 +1,5 @@
 import { CartContextType, CartProductType } from '@/types/types';
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 
 export const CartContext = createContext<CartContextType | null>(null);
 
@@ -13,6 +13,13 @@ export const CartContextProvider = (props: Props) => {
 		null
 	);
 
+	useEffect(() => {
+		const cartItems: any = localStorage.getItem('gathrCartItems');
+		const cProducts: CartProductType[] | null = JSON.parse(cartItems);
+
+		setCartProducts(cProducts);
+	}, []);
+
 	const handleAddProductToCart = useCallback((product: CartProductType) => {
 		setCartProducts((prev) => {
 			let updatedCart;
@@ -22,6 +29,8 @@ export const CartContextProvider = (props: Props) => {
 			} else {
 				updatedCart = [product];
 			}
+
+			localStorage.setItem('gathrCartItems', JSON.stringify(updatedCart));
 
 			return updatedCart;
 		});
