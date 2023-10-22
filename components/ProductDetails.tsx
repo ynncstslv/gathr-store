@@ -1,19 +1,22 @@
 'use client';
 
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { Badge } from './ui/badge';
-import { ShoppingCart, ThumbsUp } from 'lucide-react';
+import { BadgeCheck, ShoppingCart, ThumbsUp } from 'lucide-react';
 import { Button } from './ui/button';
 import { CartProductType, SelectedImageType } from '@/types/types';
 import Colors from './Colors';
 import ProductCounter from './ProductCounter';
 import ProductImage from './ProductImage';
+import { useCart } from '@/hooks/useCart';
+import { useRouter } from 'next/navigation';
 
 interface ProductDetailsProps {
 	product: any;
 }
 
 const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
+	const router = useRouter();
 	const [cartProduct, setCartProduct] = useState<CartProductType>({
 		id: product.id,
 		name: product.name,
@@ -25,6 +28,22 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 		quantity: 1,
 		price: product.price,
 	});
+	const { handleAddProductToCart, cartProducts } = useCart();
+	const [isProductInCart, setIsProductInCard] = useState(false);
+
+	useEffect(() => {
+		setIsProductInCard(false);
+
+		if (cartProducts) {
+			const existingIndex = cartProducts.findIndex(
+				(item) => item.id === product.id
+			);
+
+			if (existingIndex > -1) {
+				setIsProductInCard(true);
+			}
+		}
+	}, [cartProducts, product.id]);
 
 	const productRating =
 		product.reviews.reduce(
@@ -100,28 +119,48 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 					{product.description}
 				</p>
 				<hr className="my-4" />
-				<div className="flex flex-col items-start gap-8 mt-2 mb-8 lg:flex-row">
-					<ProductCounter
-						cartProduct={cartProduct}
-						onIncrease={handleQuantityIncrease}
-						onDecrease={handleQuantityDecrease}
-					/>
-					<div className="flex items-center gap-12">
-						{!product.images[0].color ? null : (
-							<Colors
+				{isProductInCart ? (
+					<>
+						<div className="flex items-center gap-2 mb-4">
+							<BadgeCheck size={18} className="text-teal-500" />
+							<p className="font-light text-sm text-neutral-600">
+								Product already in cart.
+							</p>
+						</div>
+						<Button
+							className="text-violet-950 border border-violet-950 bg-transparent transition hover:bg-transparent hover:opacity-90"
+							onClick={() => router.push('/cart')}
+						>
+							View Cart
+						</Button>
+					</>
+				) : (
+					<>
+						<div className="flex flex-col items-start gap-8 mt-2 mb-8 lg:flex-row">
+							<ProductCounter
 								cartProduct={cartProduct}
-								images={product.images}
-								handleColorSelect={handleColorSelect}
+								onIncrease={handleQuantityIncrease}
+								onDecrease={handleQuantityDecrease}
 							/>
-						)}
-					</div>
-				</div>
-				<Button
-					className="text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90"
-					disabled={cartProduct.stock <= cartProduct.quantity}
-				>
-					<ShoppingCart size={18} className="mr-2" /> Add to Cart
-				</Button>
+							<div className="flex items-center gap-12">
+								{!product.images[0].color ? null : (
+									<Colors
+										cartProduct={cartProduct}
+										images={product.images}
+										handleColorSelect={handleColorSelect}
+									/>
+								)}
+							</div>
+						</div>
+						<Button
+							className="text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90"
+							onClick={() => handleAddProductToCart(cartProduct)}
+							disabled={cartProduct.stock <= cartProduct.quantity}
+						>
+							<ShoppingCart size={18} className="mr-2" /> Add to Cart
+						</Button>
+					</>
+				)}
 			</div>
 		</div>
 	);

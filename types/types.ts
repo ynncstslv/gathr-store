@@ -18,4 +18,8 @@ export type SelectedImageType = {
 	image: StaticImageData;
 };
 
-export type CartContextType = { cartTotalQuantity: number };
+export type CartContextType = {
+	cartTotalQuantity: number;
+	cartProducts: CartProductType[] | null;
+	handleAddProductToCart: (product: CartProductType) => void;
+};
