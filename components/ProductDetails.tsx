@@ -22,6 +22,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 		name: product.name,
 		description: product.description,
 		category: product.category,
+		set: product.set,
 		brand: product.brand,
 		selectedImage: { ...product.images[0] },
 		stock: product.stock,

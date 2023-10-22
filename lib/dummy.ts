@@ -159,7 +159,7 @@ export const dummyProducts = [
 	{
 		id: '63ds4e9e77e727632078334019f',
 		name: 'Bastion 100+ XL',
-		set: 'Deck Box',
+		set: '',
 		brand: 'Gamegenic',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
