@@ -22,7 +22,7 @@ const Colors: FC<ColorsProps> = ({
 					{images.map((image) => {
 						return (
 							<div
-								key={cartProduct.id}
+								key={image.colorCode}
 								className={`w-7 h-7 flex items-center justify-center rounded-full border-teal-600 cursor-pointer ${
 									cartProduct.selectedImage.color === image.color
 										? 'border-2'

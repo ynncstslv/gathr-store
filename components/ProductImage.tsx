@@ -19,7 +19,7 @@ const ProductImage: FC<ProductImageProps> = ({
 				{product.images.map((image: SelectedImageType) => {
 					return (
 						<div
-							key={cartProduct.id}
+							key={image.color}
 							className={`aspect-square w-[80%] relative rounded-md border-violet-300 ${
 								cartProduct.selectedImage.color === image.color
 									? 'border-2'
