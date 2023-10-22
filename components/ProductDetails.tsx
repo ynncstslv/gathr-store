@@ -155,7 +155,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 						<Button
 							className="text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90"
 							onClick={() => handleAddProductToCart(cartProduct)}
-							disabled={cartProduct.stock <= cartProduct.quantity}
+							disabled={cartProduct.stock < cartProduct.quantity}
 						>
 							<ShoppingCart size={18} className="mr-2" /> Add to Cart
 						</Button>
