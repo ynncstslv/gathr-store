@@ -20,7 +20,7 @@ const Nav = () => {
 					<div className="flex items-center justify-end gap-2">
 						<Button
 							className="hidden px-6 text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90 sm:block"
-							onClick={() => router.push('/sign-in')}
+							onClick={() => router.push('/login')}
 						>
 							Login
 						</Button>
