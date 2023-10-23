@@ -43,7 +43,7 @@ const Cart = () => {
 							<div className="flex items-center justify-between">
 								<p className="font-bold text-lg text-violet-950">Subtotal</p>
 								<p className="font-semibold text-xl text-violet-700">
-									{cartTotalAmount.toFixed(2)}
+									$ {cartTotalAmount.toFixed(2)}
 								</p>
 							</div>
 							<p className="mb-4 font-light text-xs text-neutral-500">

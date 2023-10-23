@@ -29,6 +29,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
 			/>
 			<div className="my-4 text-center">
 				<h4 className="font-light text-sm text-neutral-500">{data.set}</h4>
+				<h4 className="font-light text-sm text-neutral-500">{data.brand}</h4>
 				<h3 className="mb-2 font-bold text-lg text-violet-950">{data.name}</h3>
 				<hr className="mb-3" />
 				<div className="flex items-center justify-center gap-4">

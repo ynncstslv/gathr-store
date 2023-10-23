@@ -35,7 +35,7 @@ export const dummyProducts = [
 		id: '64a654593e91b8e73a351e9b',
 		name: 'Draft Booster',
 		set: 'Wilds of Eldraine',
-		brand: 'Wizards of the Coast',
+		brand: '',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
 		price: 3.99,
@@ -49,7 +49,7 @@ export const dummyProducts = [
 		id: '64a4ebe300900d44bb50628a',
 		name: 'Draft Booster Box',
 		set: 'Wilds of Eldraine',
-		brand: 'Wizards of the Coast',
+		brand: '',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
 		price: 119.99,
@@ -63,7 +63,7 @@ export const dummyProducts = [
 		id: '648437b38c44d52b9542e340',
 		name: 'Set Booster',
 		set: 'Wilds of Eldraine',
-		brand: 'Wizards of the Coast',
+		brand: '',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
 		price: 4.99,
@@ -118,7 +118,7 @@ export const dummyProducts = [
 		id: '64a4e9e77e7299078334019f',
 		name: 'Set Booster Box',
 		set: 'Wilds of Eldraine',
-		brand: 'Wizards of the Coast',
+		brand: '',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
 		price: 129.99,
@@ -132,7 +132,7 @@ export const dummyProducts = [
 		id: '649d775128b6744f0f497040',
 		name: "Collector's Booster",
 		set: 'Wilds of Eldraine',
-		brand: 'Wizards of the Coast',
+		brand: '',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
 		price: 19.99,
@@ -146,7 +146,7 @@ export const dummyProducts = [
 		id: '6497040649d77744f0fb38c4',
 		name: "Collector's Booster Box",
 		set: 'Wilds of Eldraine',
-		brand: 'Wizards of the Coast',
+		brand: '',
 		description:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore, sapiente aut earum nobis fuga harum iusto laboriosam eum repellat magni et facilis. Accusamus quos ratione nisi a veniam rem eius neque aut. Iure dolor similique aliquam unde praesentium sapiente!',
 		price: 224.99,
