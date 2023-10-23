@@ -20,7 +20,12 @@ export type SelectedImageType = {
 };
 
 export type CartContextType = {
+	cartTotalAmount: number;
 	cartTotalQuantity: number;
 	cartProducts: CartProductType[] | null;
 	handleAddProductToCart: (product: CartProductType) => void;
+	handleRemoveProductFromCart: (product: CartProductType) => void;
+	handleCartQuantityIncrease: (product: CartProductType) => void;
+	handleCartQuantityDecrease: (product: CartProductType) => void;
+	handleClearCart: () => void;
 };
