@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 const EmptyCart = () => {
 	const router = useRouter();
 	return (
-		<section className="w-full mx-auto text-center">
+		<section className="w-full py-4 mx-auto text-center">
 			<Image
 				src="/assets/images/empty-cart.png"
 				alt="empty cart"
