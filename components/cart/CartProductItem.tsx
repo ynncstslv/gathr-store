@@ -7,12 +7,19 @@ import { Button } from '../ui/button';
 import { Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import ProductCounter from '../ProductCounter';
+import { useCart } from '@/hooks/useCart';
 
 interface CartProductItemProps {
 	item: CartProductType;
 }
 
 const CartProductItem: FC<CartProductItemProps> = ({ item }) => {
+	const {
+		handleRemoveProductFromCart,
+		handleCartQuantityIncrease,
+		handleCartQuantityDecrease,
+	} = useCart();
+
 	return (
 		<div className="grid grid-cols-2 py-4 border-b border-b-neutral-200 md:grid-cols-9">
 			<div>
@@ -33,27 +40,37 @@ const CartProductItem: FC<CartProductItemProps> = ({ item }) => {
 						<p className="font-light text-xs text-neutral-500">{item.brand}</p>
 						<h2 className="font-bold text-violet-950">{item.name}</h2>
 						<p className="font-light text-xs text-neutral-500">{item.set}</p>
+						<p className="font-light text-xs text-neutral-500">
+							{item.selectedImage.color}
+						</p>
 					</div>
 					<div className="flex items-center justify-between mb-8 md:mb-0">
 						<p className="font-semibold text-lg text-violet-700">{`$${item.price}`}</p>
 						<ProductCounter
 							cartProduct={item}
 							cartCounter
-							onIncrease={() => {}}
-							onDecrease={() => {}}
+							onIncrease={() => {
+								handleCartQuantityIncrease(item);
+							}}
+							onDecrease={() => {
+								handleCartQuantityDecrease(item);
+							}}
 						/>
 					</div>
 					<div className="flex items-center justify-between">
 						<Button
 							size="icon"
 							className="w-8 h-8 bg-red-500 transition hover:bg-red-500 hover:opacity-90"
-							onClick={() => {}}
+							onClick={() => {
+								handleRemoveProductFromCart(item);
+							}}
 						>
 							<Trash2 size={18} />
 						</Button>
-						<p className="font-semibold text-sm text-teal-700">{`Total: $${
-							item.price * item.quantity
-						}`}</p>
+						<p className="font-semibold text-sm text-teal-700">
+							<span className="font-light text-neutral-500">Total: </span>
+							{`$${(item.price * item.quantity).toFixed(2)}`}
+						</p>
 					</div>
 				</div>
 			</div>
