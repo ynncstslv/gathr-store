@@ -1,31 +1,20 @@
+import { User } from '@prisma/client';
 import Image from 'next/image';
 import { FC } from 'react';
 
 interface AvatarProps {
-	src?: string | null | undefined;
+	user?: User;
 }
 
-const Avatar: FC<AvatarProps> = ({ src }) => {
+const Avatar: FC<AvatarProps> = ({ user }) => {
 	return (
-		<>
-			{src ? (
-				<Image
-					src={src}
-					alt="Avatar"
-					width={30}
-					height={30}
-					className="rounded-full"
-				/>
-			) : (
-				<Image
-					src="/assets/images/placeholder.jpg"
-					alt="Placeholder"
-					width={30}
-					height={30}
-					className="rounded-full"
-				/>
-			)}
-		</>
+		<Image
+			src={user?.image || '/assets/images/placeholder.jpg'}
+			alt="Avatar"
+			width={30}
+			height={30}
+			className="rounded-full"
+		/>
 	);
 };
 
