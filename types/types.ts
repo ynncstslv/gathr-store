@@ -1,3 +1,4 @@
+import { User } from '@prisma/client';
 import { StaticImageData } from 'next/image';
 
 export type CartProductType = {
@@ -29,3 +30,8 @@ export type CartContextType = {
 	handleCartQuantityDecrease: (product: CartProductType) => void;
 	handleClearCart: () => void;
 };
+
+export type SafeUser = Omit<
+	User,
+	'createdAt' | 'updatedAt' | 'emailVerified'
+> & { createdAt: string; updatedAt: string; emailVerified: string | null };
