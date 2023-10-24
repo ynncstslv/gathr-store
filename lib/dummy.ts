@@ -81,7 +81,7 @@ export const dummyProducts = [
 				createdDate: '2023-06-26T15:53:44.483Z',
 				user: {
 					id: '6499b184b0e9a8c8709821d3',
-					name: 'Chaoo',
+					name: 'Greta Garbo',
 					email: 'example1@gmail.com',
 					emailVerified: null,
 					image:
@@ -101,7 +101,7 @@ export const dummyProducts = [
 				createdDate: '2023-06-26T14:30:40.998Z',
 				user: {
 					id: '6475af156bad4917456e6e1e',
-					name: 'Charles',
+					name: 'John Doe',
 					email: 'example@gmail.com',
 					emailVerified: null,
 					image:
@@ -200,11 +200,11 @@ export const dummyProducts = [
 				userId: '6499b184b0e9a8c8709821d3',
 				productId: '63ds4e9e77e727632078334019f',
 				rating: 5,
-				comment: 'Good enough...',
+				comment: 'Amazing!',
 				createdDate: '2023-06-26T15:53:44.483Z',
 				user: {
 					id: '6499b184b0e9a8c8709821d3',
-					name: 'Chaoo',
+					name: 'Lucas Liedke',
 					email: 'example1@gmail.com',
 					emailVerified: null,
 					image:
@@ -220,11 +220,11 @@ export const dummyProducts = [
 				userId: '6475af156bad4917456e6e1e',
 				productId: '63ds4e9e77e727632078334019f',
 				rating: 5,
-				comment: 'I really liked it!!',
+				comment: 'An awesome robust deck box for your commander decks.',
 				createdDate: '2023-06-26T14:30:40.998Z',
 				user: {
 					id: '6475af156bad4917456e6e1e',
-					name: 'Charles',
+					name: 'Charles Darwin',
 					email: 'example@gmail.com',
 					emailVerified: null,
 					image:
