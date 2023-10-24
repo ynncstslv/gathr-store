@@ -1,5 +1,3 @@
-'use client';
-
 import { useRouter } from 'next/navigation';
 import Logo from '../Logo';
 import { Button } from '../ui/button';
@@ -8,9 +6,12 @@ import Search from './Search';
 import CartIcon from './CartIcon';
 import { SearchIcon } from 'lucide-react';
 import MobileSidebar from './mobile/MobileSidebar';
+import UserMenu from './UserMenu';
+import getCurrentUser from '@/actions/getCurrentUser';
 
-const Nav = () => {
-	const router = useRouter();
+const Nav = async () => {
+	const currentUser = await getCurrentUser();
+
 	return (
 		<>
 			<nav className="px-1 py-3 bg-violet-950 md:px-0 md:py-4">
@@ -18,23 +19,17 @@ const Nav = () => {
 					<Logo />
 					<Search />
 					<div className="flex items-center justify-end gap-2">
-						<Button
-							className="hidden px-6 text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90 sm:block"
-							onClick={() => router.push('/login')}
-						>
-							Login
-						</Button>
+						<UserMenu currentUser={currentUser!} />
 						<div className="flex items-center gap-3">
 							<Button
 								variant="ghost"
 								size="icon"
 								className="flex text-violet-100 transition hover:text-violet-100 hover:bg-transparent hover:opacity-90 sm:hidden"
-								onClick={() => router.push('/')}
 							>
 								<SearchIcon size={24} />
 							</Button>
 							<CartIcon />
-							<MobileSidebar />
+							<MobileSidebar currentUser={currentUser!} />
 						</div>
 					</div>
 				</div>

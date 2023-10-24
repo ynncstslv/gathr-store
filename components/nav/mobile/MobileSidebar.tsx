@@ -1,14 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 import { Menu } from 'lucide-react';
 import Sidebar from './Sidebar';
+import { User } from '@prisma/client';
 
-const MobileSidebar = () => {
+interface MobileSidebarProps {
+	currentUser?: User;
+}
+
+const MobileSidebar: FC<MobileSidebarProps> = ({ currentUser }) => {
 	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {
@@ -25,7 +30,7 @@ const MobileSidebar = () => {
 				</Button>
 			</SheetTrigger>
 			<SheetContent side="left" className="p-0 bg-violet-950">
-				<Sidebar />
+				<Sidebar currentUser={currentUser} />
 			</SheetContent>
 		</Sheet>
 	);
