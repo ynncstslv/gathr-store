@@ -1,14 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from '../inputs/Input';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '../ui/button';
 import SocialButton from './SocialButton';
 import { BsGoogle, BsGithub } from 'react-icons/bs';
 import Link from 'next/link';
+import { signIn, useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
+	const router = useRouter();
+	const session = useSession();
 	const [isLoading, setIsLoading] = useState(false);
 	const {
 		register,
@@ -22,10 +27,40 @@ const LoginForm = () => {
 		},
 	});
 
+	useEffect(() => {
+		if (session?.status === 'authenticated') router.push('/');
+	}, [session?.status, router]);
+
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		setIsLoading(true);
 
-		console.log(data);
+		signIn('credentials', { ...data, redirect: false })
+			.then((callback) => {
+				if (callback?.error) {
+					toast.error('Something went wrong!');
+				}
+
+				if (callback?.ok && !callback?.error) {
+					toast.success('Successfully logged in!');
+				}
+			})
+			.finally(() => setIsLoading(false));
+	};
+
+	const socialAction = (action: string) => {
+		setIsLoading(true);
+
+		signIn(action, { redirect: false })
+			.then((callback) => {
+				if (callback?.error) {
+					toast.error('Something went wrong!');
+				}
+
+				if (callback?.ok && !callback?.error) {
+					toast.success('Successfully logged in!');
+				}
+			})
+			.finally(() => setIsLoading(false));
 	};
 
 	return (
@@ -68,12 +103,25 @@ const LoginForm = () => {
 				</div>
 			</div>
 			<div className="flex gap-2 mt-6">
-				<SocialButton icon={BsGoogle} label="Google" onClick={() => {}} />
-				<SocialButton icon={BsGithub} label="Github" onClick={() => {}} />
+				<SocialButton
+					icon={BsGoogle}
+					label="Google"
+					onClick={() => {
+						socialAction('google');
+					}}
+				/>
+				<SocialButton
+					icon={BsGithub}
+					label="Github"
+					onClick={() => {
+						socialAction('github');
+					}}
+				/>
 			</div>
 			<Button
 				className="w-full mt-6 text-violet-950 bg-teal-400 transition hover:bg-teal-400 hover:opacity-90"
 				onClick={handleSubmit(onSubmit)}
+				disabled={isLoading}
 			>
 				Login
 			</Button>
