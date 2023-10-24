@@ -8,7 +8,7 @@
 
 Gathr is the culmination of my journey through the ReactJS course at [Coderhouse](https://coderhouse.com). As a final project, Gathr is an ecommerce application tailored for Magic: The Gathering enthusiasts. This application boasts an extensive array of Magic: The Gathering cards, ensuring that every collector and dedicated player can find treasures to enhance their collection or power up their decks.
 
-Visit the [live demo](https://gathr-eight.app.vercel/) to experience Gathr in action.
+Visit the [live demo](https://github.com/ynncstslv/gathr-store) to experience Gathr in action.
 
 ### Table of Contents
 
