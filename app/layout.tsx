@@ -4,6 +4,7 @@ import './globals.css';
 import { Poppins } from 'next/font/google';
 import CartProvider from '@/providers/CartProvider';
 import { Toaster } from 'react-hot-toast';
+import AuthContext from '@/context/authContext';
 
 const poppins = Poppins({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -24,12 +25,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={poppins.className}>
-				<Toaster
-					toastOptions={{
-						style: { background: 'rgb(51, 65, 85)', color: '#fff' },
-					}}
-				/>
-				<CartProvider>{children}</CartProvider>
+				<AuthContext>
+					<Toaster
+						toastOptions={{
+							style: { background: 'rgb(51, 65, 85)', color: '#fff' },
+						}}
+					/>
+					<CartProvider>{children}</CartProvider>
+				</AuthContext>
 			</body>
 		</html>
 	);
