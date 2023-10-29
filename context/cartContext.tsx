@@ -14,13 +14,18 @@ export const CartContextProvider = (props: Props) => {
 	const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
 		null
 	);
+	const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
 	const [isToastShown, setIsToastShown] = useState(false);
 
 	useEffect(() => {
 		const cartItems: any = localStorage.getItem('gathrCartItems');
 		const cProducts: CartProductType[] | null = JSON.parse(cartItems);
 
+		const gathrPaymentIntetn: any = localStorage.getItem('gathrPaymentIntent');
+		const paymentIntent: string | null = JSON.parse(gathrPaymentIntetn);
+
 		setCartProducts(cProducts);
+		setPaymentIntent(paymentIntent);
 	}, []);
 
 	useEffect(() => {
@@ -152,15 +157,23 @@ export const CartContextProvider = (props: Props) => {
 		localStorage.setItem('gathrCartItems', JSON.stringify(null));
 	}, []);
 
+	const handleSetPaymentIntent = useCallback((val: string | null) => {
+		setPaymentIntent(val);
+
+		localStorage.setItem('gathrPaymentIntent', JSON.stringify(val));
+	}, []);
+
 	const value = {
 		cartTotalAmount,
 		cartTotalQuantity,
 		cartProducts,
+		paymentIntent,
 		handleAddProductToCart,
 		handleRemoveProductFromCart,
 		handleCartQuantityIncrease,
 		handleCartQuantityDecrease,
 		handleClearCart,
+		handleSetPaymentIntent,
 	};
 
 	return <CartContext.Provider value={value} {...props} />;

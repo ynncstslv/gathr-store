@@ -24,11 +24,13 @@ export type CartContextType = {
 	cartTotalAmount: number;
 	cartTotalQuantity: number;
 	cartProducts: CartProductType[] | null;
+	paymentIntent: string | null;
 	handleAddProductToCart: (product: CartProductType) => void;
 	handleRemoveProductFromCart: (product: CartProductType) => void;
 	handleCartQuantityIncrease: (product: CartProductType) => void;
 	handleCartQuantityDecrease: (product: CartProductType) => void;
 	handleClearCart: () => void;
+	handleSetPaymentIntent: (val: string | null) => void;
 };
 
 export type SafeUser = Omit<
