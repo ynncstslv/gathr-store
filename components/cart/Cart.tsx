@@ -6,9 +6,19 @@ import { Button } from '../ui/button';
 import CartProductItem from './CartProductItem';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { User } from '@prisma/client';
+import { FC } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
-const Cart = () => {
+interface CartProps {
+	currentUser?: User;
+}
+
+const Cart: FC<CartProps> = ({ currentUser }) => {
+	const router = useRouter();
 	const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
+	const { data: session } = useSession();
 
 	return (
 		<>
@@ -58,9 +68,21 @@ const Cart = () => {
 										<ArrowLeft size={18} /> <p>Continue Shopping</p>
 									</div>
 								</Link>
-								<Button className="text-violet-950 border border-violet-950 bg-transparent transition hover:bg-transparent hover:opacity-90">
-									Checkout
-								</Button>
+								{session?.user ? (
+									<Button
+										className="text-violet-950 border border-violet-950 bg-transparent transition hover:bg-transparent hover:opacity-90"
+										onClick={() => router.push('/checkout')}
+									>
+										Checkout
+									</Button>
+								) : (
+									<Button
+										className="text-violet-950 border border-violet-950 bg-transparent transition hover:bg-transparent hover:opacity-90"
+										onClick={() => router.push('/login')}
+									>
+										Login
+									</Button>
+								)}
 							</div>
 						</div>
 					</div>
