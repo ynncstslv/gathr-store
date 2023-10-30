@@ -1,5 +1,11 @@
 import CMDM from '@/public/assets/images/available/masters.jpeg';
 import WOE from '@/public/assets/images/available/eldraine.jpeg';
+import {
+	MdDashboard,
+	MdDns,
+	MdFormatListBulleted,
+	MdLibraryAdd,
+} from 'react-icons/md';
 
 export const paths = [
 	{
@@ -57,3 +63,30 @@ export const categories = [
 		name: 'Accessories',
 	},
 ];
+
+export const adminItems = [
+	{
+		id: 1,
+		name: 'Summary',
+		icon: MdDashboard,
+		route: '/admin',
+	},
+	{
+		id: 2,
+		name: 'Add Products',
+		icon: MdLibraryAdd,
+		route: '/admin/add-product',
+	},
+	{
+		id: 3,
+		name: 'Manage Products',
+		icon: MdDns,
+		route: '/admin/manage-products',
+	},
+	{
+		id: 4,
+		name: 'Manage Orders',
+		icon: MdFormatListBulleted,
+		route: '/admin/manage-orders',
+	},
+] as const;
