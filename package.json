@@ -21,6 +21,7 @@
 		"bcrypt": "^5.1.1",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.0.0",
+		"firebase": "^10.5.2",
 		"lucide-react": "^0.288.0",
 		"micro": "^10.0.1",
 		"moment": "^2.29.4",
