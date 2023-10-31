@@ -1,20 +1,29 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import Loader from '../Loader';
-import { dummyProducts } from '../../lib/dummy';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from 'next/image';
+import getProducts, { IProductParams } from '@/actions/getProducts';
+import NullData from '../NullData';
 import ProductCard from '../ProductCard';
 
-const Featured = () => {
-	const [loading, setLoading] = useState(false);
+interface FeaturedProps {
+	searchParams: IProductParams;
+}
 
-	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false);
-		}, 2000);
-	}, []);
+export default async function Featured({ searchParams }: FeaturedProps) {
+	const products = await getProducts({ category: null });
+
+	if (products.length === 0) {
+		return <NullData title="No products found!" />;
+	}
+
+	function shuffleArray(array: any[]) {
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+
+		return array;
+	}
+
+	const shuffleProducts = shuffleArray(products);
 
 	return (
 		<section className="w-full mt-10 mx-auto md:mt-16">
@@ -26,35 +35,11 @@ const Featured = () => {
 					New releases and best sellers for this month.
 				</p>
 			</div>
-			{loading ? (
-				<Loader />
-			) : (
-				<Swiper
-					className="my-swiper"
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1024: {
-							slidesPerView: 3,
-						},
-						1440: {
-							slidesPerView: 5,
-						},
-					}}
-				>
-					{dummyProducts.slice(0, 5).map((product) => (
-						<SwiperSlide key={product.id}>
-							<ProductCard data={product} />
-						</SwiperSlide>
-					))}
-				</Swiper>
-			)}
+			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+				{shuffleProducts.slice(0, 5).map((product) => (
+					<ProductCard key={product.id} data={product} />
+				))}
+			</div>
 		</section>
 	);
-};
-
-export default Featured;
+}
