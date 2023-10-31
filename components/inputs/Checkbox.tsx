@@ -12,7 +12,7 @@ interface CheckboxProps {
 
 const Checkbox: FC<CheckboxProps> = ({ id, label, disabled, register }) => {
 	return (
-		<div className="w-full flex items-center gap-2">
+		<div className="w-full flex items-center gap-2 mb-4 md:mb-0">
 			<input id={id} type="checkbox" disabled={disabled} {...register(id)} />
 			<label htmlFor={id} className="font-light text-sm text-neutral-500">
 				{label}
