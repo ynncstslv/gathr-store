@@ -1,28 +1,20 @@
-import { User } from '@prisma/client';
-
 export type CartProductType = {
 	id: string;
 	name: string;
 	description: string;
 	category: string;
 	brand?: string;
-	set: string;
+	set?: string;
 	selectedImage: SelectedImageType;
 	stock: number;
 	quantity: number;
 	price: number;
 };
 
-export type SelectedImageType = {
-	color: string;
-	colorCode: string;
-	image: string;
-};
-
 export type CartContextType = {
-	cartTotalAmount: number;
-	cartTotalQuantity: number;
 	cartProducts: CartProductType[] | null;
+	cartTotalQuantity: number;
+	cartTotalAmount: number;
 	paymentIntent: string | null;
 	handleAddProductToCart: (product: CartProductType) => void;
 	handleRemoveProductFromCart: (product: CartProductType) => void;
@@ -32,19 +24,20 @@ export type CartContextType = {
 	handleSetPaymentIntent: (val: string | null) => void;
 };
 
-export type SafeUser = Omit<
-	User,
-	'createdAt' | 'updatedAt' | 'emailVerified'
-> & { createdAt: string; updatedAt: string; emailVerified: string | null };
-
 export type ImageType = {
+	image: File | null;
 	color: string;
 	colorCode: string;
-	image: File | null;
+};
+
+export type SelectedImageType = {
+	image: string;
+	color: string;
+	colorCode: string;
 };
 
 export type UploadedImageType = {
+	image: string;
 	color: string;
 	colorCode: string;
-	image: string;
 };
