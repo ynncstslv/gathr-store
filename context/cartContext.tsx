@@ -1,5 +1,5 @@
-import { CartContextType, CartProductType } from '@/types/types';
 import { createContext, useCallback, useEffect, useState } from 'react';
+import { CartContextType, CartProductType } from '@/types/types';
 import toast from 'react-hot-toast';
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -9,11 +9,11 @@ interface Props {
 }
 
 export const CartContextProvider = (props: Props) => {
-	const [cartTotalAmount, setCartTotalAmount] = useState(0);
-	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
 	const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
 		null
 	);
+	const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
+	const [cartTotalAmount, setCartTotalAmount] = useState(0);
 	const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
 	const [isToastShown, setIsToastShown] = useState(false);
 
@@ -21,8 +21,8 @@ export const CartContextProvider = (props: Props) => {
 		const cartItems: any = localStorage.getItem('gathrCartItems');
 		const cProducts: CartProductType[] | null = JSON.parse(cartItems);
 
-		const gathrPaymentIntetn: any = localStorage.getItem('gathrPaymentIntent');
-		const paymentIntent: string | null = JSON.parse(gathrPaymentIntetn);
+		const gathrPaymentIntent: any = localStorage.getItem('gathrPaymentIntent');
+		const paymentIntent: string | null = JSON.parse(gathrPaymentIntent);
 
 		setCartProducts(cProducts);
 		setPaymentIntent(paymentIntent);
@@ -51,6 +51,7 @@ export const CartContextProvider = (props: Props) => {
 		getTotals();
 	}, [cartProducts]);
 
+	// handler functions
 	const handleAddProductToCart = useCallback(
 		(product: CartProductType) => {
 			if (!isToastShown) {
@@ -87,7 +88,7 @@ export const CartContextProvider = (props: Props) => {
 				});
 
 				setCartProducts(filteredProducts);
-				toast.success('Product removed from cart!');
+				toast.success('Products removed from cart!');
 
 				localStorage.setItem(
 					'gathrCartItems',
@@ -102,9 +103,8 @@ export const CartContextProvider = (props: Props) => {
 		(product: CartProductType) => {
 			let updatedCart;
 
-			if (product.quantity === product.stock) {
+			if (product.quantity === product.stock)
 				return toast.error('Product quantity cannot exceed stock!');
-			}
 
 			if (cartProducts) {
 				updatedCart = [...cartProducts];
@@ -113,9 +113,7 @@ export const CartContextProvider = (props: Props) => {
 					(item) => item.id === product.id
 				);
 
-				if (existingIndex > -1) {
-					updatedCart[existingIndex].quantity += 1;
-				}
+				if (existingIndex > -1) updatedCart[existingIndex].quantity += 1;
 
 				setCartProducts(updatedCart);
 				localStorage.setItem('gathrCartItems', JSON.stringify(updatedCart));
@@ -128,9 +126,8 @@ export const CartContextProvider = (props: Props) => {
 		(product: CartProductType) => {
 			let updatedCart;
 
-			if (product.quantity === 1) {
+			if (product.quantity === 1)
 				return toast.error('Product quantity cannot be less than 1!');
-			}
 
 			if (cartProducts) {
 				updatedCart = [...cartProducts];
@@ -139,9 +136,7 @@ export const CartContextProvider = (props: Props) => {
 					(item) => item.id === product.id
 				);
 
-				if (existingIndex > -1) {
-					updatedCart[existingIndex].quantity -= 1;
-				}
+				if (existingIndex > -1) updatedCart[existingIndex].quantity -= 1;
 
 				setCartProducts(updatedCart);
 				localStorage.setItem('gathrCartItems', JSON.stringify(updatedCart));
@@ -163,10 +158,11 @@ export const CartContextProvider = (props: Props) => {
 		localStorage.setItem('gathrPaymentIntent', JSON.stringify(val));
 	}, []);
 
+	// values
 	const value = {
-		cartTotalAmount,
-		cartTotalQuantity,
 		cartProducts,
+		cartTotalQuantity,
+		cartTotalAmount,
 		paymentIntent,
 		handleAddProductToCart,
 		handleRemoveProductFromCart,
