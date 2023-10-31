@@ -5,17 +5,11 @@ import NullData from '@/components/NullData';
 import AddProductForm from '@/components/admin/AddProductForm';
 
 export default async function AddProductPage() {
-	const currentUser = getCurrentUser();
+	const currentUser = await getCurrentUser();
 
-	currentUser
-		.then((userData) => {
-			if (!userData || userData.role !== 'ADMIN') {
-				return <NullData title="Oops!" />;
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+	if (!currentUser || currentUser.role !== 'ADMIN') {
+		return <NullData title="Access Denied!" />;
+	}
 
 	return (
 		<main className="pt-4 pb-14 md:py-16">
