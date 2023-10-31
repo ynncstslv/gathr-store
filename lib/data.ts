@@ -90,3 +90,66 @@ export const adminItems = [
 		route: '/admin/manage-orders',
 	},
 ] as const;
+
+export const colors = [
+	{
+		color: 'Black',
+		colorCode: '#000',
+		image: null,
+	},
+	{
+		color: 'White',
+		colorCode: '#fff',
+		image: null,
+	},
+	{
+		color: 'Red',
+		colorCode: '#dc2626',
+		image: null,
+	},
+	{
+		color: 'Green',
+		colorCode: '#84cc16',
+		image: null,
+	},
+	{
+		color: 'Blue',
+		colorCode: '#2563eb',
+		image: null,
+	},
+	{
+		color: 'Cyan',
+		colorCode: '#22d3ee',
+		image: null,
+	},
+	{
+		color: 'Pink',
+		colorCode: '#ec4899',
+		image: null,
+	},
+	{
+		color: 'Yellow',
+		colorCode: '#facc15',
+		image: null,
+	},
+	{
+		color: 'Purple',
+		colorCode: '#7c3aed',
+		image: null,
+	},
+	{
+		color: 'Orange',
+		colorCode: '#f97316',
+		image: null,
+	},
+	{
+		color: 'Gold',
+		colorCode: '#854d0e',
+		image: null,
+	},
+	{
+		color: 'Silver',
+		colorCode: '#a8a29e',
+		image: null,
+	},
+] as const;
