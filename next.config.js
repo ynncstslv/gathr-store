@@ -5,6 +5,7 @@ const nextConfig = {
 			'cards.scryfall.io',
 			'lh3.googleusercontent.com',
 			'avatars.githubusercontent.com',
+			'firebasestorage.googleapis.com',
 		],
 	},
 };
