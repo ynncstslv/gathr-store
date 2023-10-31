@@ -1,5 +1,6 @@
 import CMDM from '@/public/assets/images/available/masters.jpeg';
 import WOE from '@/public/assets/images/available/eldraine.jpeg';
+
 import {
 	MdDashboard,
 	MdDns,
@@ -7,6 +8,7 @@ import {
 	MdLibraryAdd,
 } from 'react-icons/md';
 
+// nav paths
 export const paths = [
 	{
 		id: 1,
@@ -30,6 +32,7 @@ export const paths = [
 	},
 ] as const;
 
+// available products' cards at the bottom of landing page
 export const availableRightNow = [
 	{
 		id: 1,
@@ -45,6 +48,7 @@ export const availableRightNow = [
 	},
 ];
 
+// categories for products in the store
 export const categories = [
 	{
 		id: 1,
@@ -64,6 +68,7 @@ export const categories = [
 	},
 ];
 
+// admin items for the admin dashboard
 export const adminItems = [
 	{
 		id: 1,
@@ -91,6 +96,7 @@ export const adminItems = [
 	},
 ] as const;
 
+// colors for the color selection in the add product form
 export const colors = [
 	{
 		color: 'Black',

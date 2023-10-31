@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyCdorXxFsdSeTVI8CRMeZl_JOiis-SFQGQ',
+	apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
 	authDomain: 'gathr-store.firebaseapp.com',
 	projectId: 'gathr-store',
 	storageBucket: 'gathr-store.appspot.com',
