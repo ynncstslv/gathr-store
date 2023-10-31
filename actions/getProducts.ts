@@ -10,16 +10,10 @@ export default async function getProducts(params: IProductParams) {
 		const { category, searchTerm } = params;
 
 		let searchString = searchTerm;
-
-		if (!searchTerm) {
-			searchString = '';
-		}
+		if (!searchTerm) searchString = '';
 
 		let query: any = {};
-
-		if (category) {
-			query.category = category;
-		}
+		if (category) query.category = category;
 
 		const products = await prisma.product.findMany({
 			where: {
@@ -54,7 +48,7 @@ export default async function getProducts(params: IProductParams) {
 		});
 
 		return products;
-	} catch (error: any) {
-		throw new Error(error);
+	} catch (err: any) {
+		throw new Error(err);
 	}
 }

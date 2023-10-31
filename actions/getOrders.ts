@@ -12,7 +12,7 @@ export default async function getOrders() {
 		});
 
 		return orders;
-	} catch (error: any) {
-		throw new Error(error);
+	} catch (err: any) {
+		throw new Error(err);
 	}
 }
