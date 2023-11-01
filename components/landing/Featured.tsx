@@ -35,8 +35,8 @@ export default async function Featured({ searchParams }: FeaturedProps) {
 					New releases and best sellers for this month.
 				</p>
 			</div>
-			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-				{shuffleProducts.slice(0, 5).map((product) => (
+			<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+				{shuffleProducts.slice(0, 3).map((product) => (
 					<ProductCard key={product.id} data={product} />
 				))}
 			</div>
