@@ -38,13 +38,13 @@ export const availableRightNow = [
 		id: 1,
 		name: 'Wilds of Eldraine',
 		image: WOE,
-		route: '/sealed',
+		route: '/store',
 	},
 	{
 		id: 2,
 		name: 'Commander Masters',
 		image: CMDM,
-		route: '/sealed',
+		route: '/store',
 	},
 ];
 
