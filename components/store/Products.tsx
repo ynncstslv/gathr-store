@@ -2,11 +2,7 @@ import getProducts, { IProductParams } from '@/actions/getProducts';
 import NullData from '../NullData';
 import ProductCard from '../ProductCard';
 
-interface ProductProps {
-	searchParams: IProductParams;
-}
-
-export default async function Products({ searchParams }: ProductProps) {
+export default async function Products() {
 	const products = await getProducts({ category: null });
 
 	if (products.length === 0) {
