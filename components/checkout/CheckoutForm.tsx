@@ -72,18 +72,26 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
 					Checkout
 				</h1>
 			</div>
-			<h2 className="">Personal Information</h2>
-			<AddressElement
-				options={{ mode: 'shipping', allowedCountries: ['US', 'UK', 'BR'] }}
-			/>
-			<h2 className="">Payment Information</h2>
-			<PaymentElement id="paymentElement" options={{ layout: 'tabs' }} />
-			<div>
-				<p className="">Total: $ {cartTotalAmount.toFixed(2)}</p>
+			<div className="mb-6">
+				<h2 className="mb-2 text-violet-950">Personal Information</h2>
+				<AddressElement
+					options={{ mode: 'shipping', allowedCountries: ['US', 'UK', 'BR'] }}
+				/>
 			</div>
-			<Button onClick={() => {}} disabled={loading}>
-				{loading ? 'Processing Payment...' : 'Checkout'}
-			</Button>
+			<h2 className="mb-2 text-violet-950">Payment Information</h2>
+			<PaymentElement id="paymentElement" options={{ layout: 'tabs' }} />
+			<div className="flex items-center justify-between gap-12 mt-8">
+				<p className="font-bold text-2xl text-teal-600">
+					Total: $ {cartTotalAmount.toFixed(2)}
+				</p>
+				<Button
+					className="w-full max-w-[70%]"
+					onClick={() => {}}
+					disabled={loading}
+				>
+					{loading ? 'Processing Payment...' : 'Checkout'}
+				</Button>
+			</div>
 		</form>
 	);
 };
