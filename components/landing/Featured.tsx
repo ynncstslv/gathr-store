@@ -1,12 +1,9 @@
-import getProducts, { IProductParams } from '@/actions/getProducts';
+import getProducts from '@/actions/getProducts';
+
 import NullData from '../NullData';
 import ProductCard from '../ProductCard';
 
-interface FeaturedProps {
-	searchParams: IProductParams;
-}
-
-export default async function Featured({ searchParams }: FeaturedProps) {
+export default async function Featured() {
 	const products = await getProducts({ category: null });
 
 	if (products.length === 0) {
