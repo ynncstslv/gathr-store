@@ -1,8 +1,11 @@
-import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import prisma from '@/lib/prismadb';
-import { CartProductType } from '@/types/types';
+import { NextResponse } from 'next/server';
+
 import getCurrentUser from '@/actions/getCurrentUser';
+
+import prisma from '@/lib/prismadb';
+
+import { CartProductType } from '@/types/types';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 	apiVersion: '2023-10-16',
@@ -15,17 +18,15 @@ const calculateOrderAmount = (items: CartProductType[]) => {
 		return acc + itemTotal;
 	}, 0);
 
-	const price: any = Math.floor(totalPrice);
+	const price = Math.floor(totalPrice);
 
 	return price;
 };
 
 export async function POST(request: Request) {
 	const currentUser = await getCurrentUser();
-
-	if (!currentUser) {
+	if (!currentUser)
 		return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-	}
 
 	const body = await request.json();
 	const { items, payment_intent_id } = body;
@@ -53,7 +54,7 @@ export async function POST(request: Request) {
 				{ amount: total }
 			);
 
-			const [existingOrder, updateOrder] = await Promise.all([
+			const [existingOrder, updatedOrder] = await Promise.all([
 				prisma.order.findFirst({
 					where: {
 						paymentIntentId: payment_intent_id,
@@ -88,9 +89,7 @@ export async function POST(request: Request) {
 
 		orderData.paymentIntentId = paymentIntent.id;
 
-		await prisma.order.create({
-			data: orderData,
-		});
+		await prisma.order.create({ data: orderData });
 
 		return NextResponse.json({ paymentIntent });
 	}
