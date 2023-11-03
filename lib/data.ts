@@ -1,6 +1,11 @@
 import CMDM from '@/public/assets/images/available/masters.jpeg';
 import WOE from '@/public/assets/images/available/eldraine.jpeg';
 
+import { HiSparkles } from 'react-icons/hi2';
+import { IoIdCardSharp } from 'react-icons/io5';
+import { PiCardholderFill } from 'react-icons/pi';
+import { TbCardsFilled } from 'react-icons/tb';
+
 import {
 	MdDashboard,
 	MdDns,
@@ -53,18 +58,22 @@ export const categories = [
 	{
 		id: 1,
 		name: 'Singles',
+		icon: IoIdCardSharp,
 	},
 	{
 		id: 2,
 		name: 'Sealed',
+		icon: TbCardsFilled,
 	},
 	{
 		id: 3,
 		name: 'Complete Sets',
+		icon: PiCardholderFill,
 	},
 	{
 		id: 4,
 		name: 'Accessories',
+		icon: HiSparkles,
 	},
 ];
 
