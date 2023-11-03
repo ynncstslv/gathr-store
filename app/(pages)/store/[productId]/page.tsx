@@ -1,9 +1,10 @@
+import getCurrentUser from '@/actions/getCurrentUser';
 import getProductById from '@/actions/getProductById';
+import AddReview from '@/components/AddReview';
 import Container from '@/components/Container';
 import NullData from '@/components/NullData';
 import ProductDetails from '@/components/ProductDetails';
 import ProductRatings from '@/components/ProductRatings';
-import { dummyProducts } from '@/lib/dummy';
 
 interface IParams {
 	productId?: string;
@@ -11,6 +12,7 @@ interface IParams {
 
 export default async function ProductPage({ params }: { params: IParams }) {
 	const product = await getProductById(params);
+	const user = await getCurrentUser();
 
 	if (!product) {
 		return <NullData title="Product not found!" />;
@@ -21,6 +23,7 @@ export default async function ProductPage({ params }: { params: IParams }) {
 			<Container>
 				<ProductDetails product={product} />
 				<ProductRatings product={product} />
+				<AddReview product={product} user={user} />
 			</Container>
 		</main>
 	);
