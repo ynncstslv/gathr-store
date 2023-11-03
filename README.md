@@ -8,7 +8,7 @@
 
 Gathr is the culmination of my journey through the ReactJS course at [Coderhouse](https://coderhouse.com). As a final project, Gathr is an ecommerce application tailored for Magic: The Gathering enthusiasts. This application boasts an extensive array of Magic: The Gathering cards, ensuring that every collector and dedicated player can find treasures to enhance their collection or power up their decks.
 
-Visit the [live demo](https://github.com/ynncstslv/gathr-store) to experience Gathr in action.
+Visit the [live demo](https://gathr-store.vercel.app/) to experience Gathr in action.
 
 ### Table of Contents
 
@@ -24,6 +24,7 @@ Visit the [live demo](https://github.com/ynncstslv/gathr-store) to experience Ga
 <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-plain.svg" width="30" /></a>
 <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" width="30" /></a>
 <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" width="30" /></a>
+<a href="https://www.firebase.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg" width="30" /></a>
 
 ### Getting Started
 
