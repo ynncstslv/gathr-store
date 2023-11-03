@@ -30,7 +30,7 @@ const ProductRatings: FC<ProductRatingsProps> = ({ product }) => {
 							>
 								<div className="flex items-center justify-between gap-8">
 									<div className="flex items-center gap-2">
-										<Avatar src={review?.user.image} />
+										<Avatar user={review?.user.image} />
 										<p className="font-semibold text-base text-violet-800">
 											{review?.user.name}
 										</p>
